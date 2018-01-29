@@ -12,5 +12,5 @@ kernel.o: ./kernel.c
 	$(BUILD) -std=gnu99 -c kernel.c -o kernel.o -O2 -Wall -Wextra 
 
 clean:
-	rm -v boot.o kernel.bin kernel.elf kernel.o || true
+	rm -v boot.o kernel.elf kernel.o || true
 
