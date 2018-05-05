@@ -1,6 +1,9 @@
 #include <stddef.h>
 #include <stdint.h>
 
+// Available memory. 1GB. 0x00000000 to 0x3FFFFFFF
+// IO address range 0x3F000000 to 0x3FFFFFFF
+
 char *hello_world = "Hello, Kernel World!\n";
 char *bad_input = "Bad input!\n";
 char *goodby = "Goodby\n";
@@ -35,6 +38,7 @@ static void delay(int32_t count) {
   asm volatile("__delay_%=: subs %[count], %[count], #1; bne __delay_%=\n"
 	       : "=r"(count): [count]"0"(count) : "cc");
 }
+
 
 enum {
   // The GPIO registers base address.
