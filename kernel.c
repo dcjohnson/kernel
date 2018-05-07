@@ -1,14 +1,13 @@
 #include <stddef.h>
 #include <stdint.h>
 
-// Available memory. 1GB. 0x00000000 to 0x3FFFFFFF
-// IO address range 0x3F000000 to 0x3FFFFFFF
-
-char *hello_world = "Hello, Kernel World!\n";
 char *bad_input = "Bad input!\n";
 char *goodby = "Goodby\n";
 
+// Available memory. 1GB. 0x00000000 to 0x3FFFFFFF
+// IO address range 0x3F000000 to 0x3FFFFFFF
 extern void *__heap_start;
+uint32_t __heap_end = 0x3FFFFFFF;
 
 struct Node {
   unsigned int x;
