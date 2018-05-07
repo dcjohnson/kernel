@@ -2,6 +2,13 @@
 .global _start
 
 _start:
+	mrc     p15, 0, r0, c0, c0, 5
+	and r0, r0, #3
+	cmp     r0, #0                          
+	beq init @ if the process then execute kernel_main. All others hang.
+	b halt
+
+init:	
 	mov sp, #0x8000
 
 	ldr r4, =__bss_start

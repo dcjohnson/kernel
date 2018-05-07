@@ -2,7 +2,7 @@ COMPILER=/usr/local/bin/gcc-arm-none-eabi-6-2017-q1-update/bin/arm-none-eabi-gcc
 FLAGS=-mcpu=arm1176jzf-s -fpic -ffreestanding
 BUILD=$(COMPILER) $(FLAGS)
 
-make: clean ./boot.o ./kernel.o ./linker.ld
+make: ./boot.o ./kernel.o ./linker.ld
 	$(COMPILER) -T linker.ld -o kernel.elf -ffreestanding -O2 -nostdlib boot.o kernel.o
 
 boot.o: ./boot.S
