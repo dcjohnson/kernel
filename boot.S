@@ -2,11 +2,21 @@
 .global _start
 
 _start:
-	mrc     p15, 0, r0, c0, c0, 5
+	@ This is the code that is used to park the other core's
+	@ execution. Remove it when running in a real raspberry pi.
+	@ Of course. The init section must still be executed.
+	@@@@@@@@@
+	@ START @
+	@@@@@@@@@
+	mrc p15, 0, r0, c0, c0, 5
 	and r0, r0, #3
-	cmp     r0, #0                          
-	beq init @ if the process then execute kernel_main. All others hang.
+	cmp r0, #0
+	@ if the process then execute kernel_main. All others hang.
+	beq init 
 	b halt
+	@@@@@@@
+	@ END @
+	@@@@@@@
 
 init:	
 	mov sp, #0x8000
