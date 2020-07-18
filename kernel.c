@@ -226,6 +226,8 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t atags) {
 
   uart_put_uint(0xFFFFFFFF);
 
+  uart_puts("Hello World!\n");
+  
   ghetto_print();
   
   char *x = "0123456789\n";
