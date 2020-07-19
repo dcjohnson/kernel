@@ -3,7 +3,7 @@ ENTRY(_start)
 SECTIONS
 {
     /* Starts at LOADER_ADDR. */
-    . = 0x8000;
+    . = 0x8000; /* the stack for the kernel is [0 - 0x8000] */
     __start = .;
     __text_start = .;
     .text :
