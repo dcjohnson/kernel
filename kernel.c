@@ -41,7 +41,7 @@ static void delay(int32_t count) {
 
 enum {
   // The GPIO registers base address.
-  GPIO_BASE = 0x3F200000, // for raspi2 & 3, 0x20200000 for raspi1
+  GPIO_BASE = 0x3F200000, // for raspi2 & 3
   
   // The offsets for reach register.
   

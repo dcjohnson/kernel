@@ -8,11 +8,20 @@ _start:
 	@@@@@@@@@
 	@ START @
 	@@@@@@@@@
+	@ Get the register ID
 	mrc p15, 0, r0, c0, c0, 5
+
+	@ And the value with the number 3. This allows us to ignore the rest of the bits of the register
+	@ and ensure that the only core that executes the code is core 0. The other cores will result in a
+	@ non-zero value in r0. 
 	and r0, r0, #3
+
+	@ Compare r0 with 0.
 	cmp r0, #0
-	@ if the process then execute kernel_main. All others hang.
-	beq init 
+	@ If equal jump to init
+	beq init
+
+	@ Else hang
 	b halt
 	@@@@@@@
 	@ END @
@@ -36,7 +45,9 @@ init:
 	cmp r4, r9
 	blo 1b
 
+	@ load the address of kernel_main
 	ldr r3, =kernel_main
+	@ Call kernel_main
 	blx r3
 
 halt:
